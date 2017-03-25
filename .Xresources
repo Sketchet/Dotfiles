@@ -1,0 +1,55 @@
+! colors
+*background:                #1c1c1c
+*foreground:                #6aa7a5
+*cursorColor:               #6aa7a5
+
+! normal
+*color0:                    #bfbfbf
+*color1:                    #416863
+*color2:                    #9b3948
+*color3:                    #365153
+*color4:                    #20474c
+*color5:                    #2a474a
+*color6:                    #9b3948
+*color7:                    #406851
+                            
+! bright                    
+*color8:                    #365a5c
+*color9:                    #b54f52
+*color10:                   #193a48
+*color11:                   #466852
+*color12:                   #66434d
+*color13:                   #513640
+*color14:                   #365153
+*color15:                   #b54f52
+
+! urxvt
+URxvt*scrollBar:            false
+URxvt*internalBorder:       24
+
+URxvt*letterSpace:          1
+
+URxvt*font:                 xft:Agave:size=10
+
+*antialias:                 true
+*autohint:                  true
+
+! rofi color
+rofi.color-enabled:         true
+!                           bg       border   separator
+rofi.color-window:          #1c1c1c, #1c1c1c, #6aa7a5
+!                           bg       fg       bg-alt   hl-bg    hl-fg 
+rofi.color-normal:          #1c1c1c, #6aa7a5, #1c1c1c, #6aa7a5, #1c1c1c
+rofi.color-active:          #1c1c1c, #6aa7a5, #1c1c1c, #6aa7a5, #1c1c1c
+rofi.color-urgent:          #1c1c1c, #6aa7a5, #1c1c1c, #6aa7a5, #1c1c1c
+! rofi separtor style
+rofi.separator-style:       solid
+! rofi scrollbar
+rofi.hide-scrollbar:        true
+
+Xft.autohint:               1
+Xft.lcdfilter:              lcddefault
+Xft.hintstyle:              hintslight
+Xft.hinting:                1
+Xft.antialias:              1
+Xft.rgba:                   rgb

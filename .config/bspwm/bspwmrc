@@ -1,0 +1,36 @@
+#! /bin/sh
+
+# keybind manager
+sxhkd &
+
+# mouse focus
+bspc config focus_follows_pointer true
+
+# window configurations
+bspc config border_width         5
+bspc config window_gap          12
+bspc config normal_border_color \#1a1a1a
+bspc config active_border_color \#1a1a1a
+bspc config focused_border_color \#171717
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+# setup for multiple monitors
+bspc monitor DVI-I-1 -d 1 2 3 4 5
+bspc monitor DP-1 -d 6 7 8 9 10
+
+# programs to run during startup
+sh ~/.fehbg &
+~/.config/polybar/launch.sh
+xsetroot -cursor_name left_ptr &
+#compton &
+
+
+## default rules
+#bspc rule -a Gimp desktop='^8' state=floating follow=on
+#bspc rule -a Chromium desktop='^2'
+#bspc rule -a mplayer2 state=floating
+#bspc rule -a Kupfer.py focus=on
+#bspc rule -a Screenkey manage=off

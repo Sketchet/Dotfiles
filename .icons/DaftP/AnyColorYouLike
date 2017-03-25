@@ -1,0 +1,3 @@
+#!/bin/bash
+cd ~/.icons/DaftP/scalable/scripts/
+exec ~/.icons/DaftP/scalable/scripts/script_gui.py $@
