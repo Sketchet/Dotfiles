@@ -1,27 +1,4 @@
-! colors
-*background:                #1c1c1c
-*foreground:                #6aa7a5
-*cursorColor:               #6aa7a5
-
-! normal
-*color0:                    #bfbfbf
-*color1:                    #416863
-*color2:                    #9b3948
-*color3:                    #365153
-*color4:                    #20474c
-*color5:                    #2a474a
-*color6:                    #9b3948
-*color7:                    #406851
-                            
-! bright                    
-*color8:                    #365a5c
-*color9:                    #b54f52
-*color10:                   #193a48
-*color11:                   #466852
-*color12:                   #66434d
-*color13:                   #513640
-*color14:                   #365153
-*color15:                   #b54f52
+#include ".config/colors/.Xresources"
 
 ! urxvt
 URxvt*scrollBar:            false
