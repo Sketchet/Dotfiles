@@ -1,0 +1,43 @@
+! Colorscheme for X Applications
+!
+! created by: Daylen W <daylen@protonmail.com>
+
+! basic
+*background:        #12121e
+*foreground:        #ebebff
+*cursorColor:       #ebebff
+
+! black
+*color0:            #31313f
+*color8:            #3e3e4f
+
+! red
+*color1:            #a88193
+*color9:            #daa7be
+
+! green
+*color2:            #a2bcc7
+*color10:           #caebf9
+
+! yellow
+*color3:            #c6b59c
+*color11:           #f8e2c3
+
+! blue
+*color4:            #4f64aa
+*color12:           #6681dc
+
+! magenta
+*color5:            #7b77aa
+*color13:           #969adc
+
+! cyan
+*color6:            #68adc7
+*color14:           #82d8f9
+
+! white
+*color7:            #dedef5
+*color15:           #e7e7ff
+
+
+! extra colors

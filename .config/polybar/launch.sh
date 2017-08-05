@@ -7,7 +7,6 @@ killall -q polybar
 while pgrep -x polybar >/dev/null; do sleep 1; done
 
 # launch the polybars
-polybar bar1 &
-polybar bar2 &
+polybar --log=info bar1 &
 
 echo "Bars online..."

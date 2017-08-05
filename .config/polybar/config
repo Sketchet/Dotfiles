@@ -8,113 +8,78 @@
 ;=====================================================
 
 [colors]
-background = #1c1c1c
-background-alt = #181818
-foreground = #eee
-foreground-alt = #555
+background = ${xrdb:background}
+background-alt = ${xrdb:color0}
+foreground = ${xrdb:foreground}
+foreground-alt = ${xrdb:color1}
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 
 [bar/bar1]
-monitor = DP-1
+monitor = DVI-I-1
 width = 100%
-height = 35
-offset-x = 0
-offset-y = 0
-;bottom = true
+height = 36
+radius = 0.0
+fixed-center = false
+offset-y = -2
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-underline-size = 2
-underline-color = ${colors.foreground}
+line-size = 2
+line-color = ${xrdb:color9}
 
-spacing = 1
-padding-left = 0
-padding-right = 1
-module-margin-left = 0
-module-margin-right = 0
+border-size = 0
+border-color = #00000000
 
-font-0 = Agave:pixelsize=10;0
-font-1 = FontAwesome:size=10;-2
-font-2 = siji:pixilsize=10;0
+padding-left = 2
+padding-right = 2
 
-modules-left = bspwm xwindow
-modules-center = 
-modules-right = volume spotify date
+module-margin-left = 1
+module-margin-right = 2
 
-;tray-position = right
-;tray-padding = 2
-;tray-background = #66333333
+font-0 = agave:pixelsize=14;1
+font-1 = unifont:fontformat=truetype:size=14:antialias=false;0
+font-2 = fontawesome:pixelsize=14;1
+
+modules-left = bspwm
+modules-center = xwindow
+modules-right = filesystem volume memory cpu temperature date powermenu
+
+tray-position =
+tray-padding = 2
+;tray-transparent = true
+;tray-background = #0063ff
 
 wm-restack = bspwm
+
+override-redirect = true
 
 scroll-up = bspwm-desknext
 scroll-down = bspwm-deskprev
 
 [bar/bar2]
-monitor = DVI-I-1
-width = 100%
-height = 35
-offset-x = 0
-offset-y = 0
-;bottom = true
+inherit = bar/bar1
 
-background = ${colors.background}
-foreground = ${colors.foreground}
+monitor = DP-1
 
-underline-size = 2
-underline-color = ${colors.foreground}
+modules-left = bspwm
+modules-center = xwindow
+modules-right =
 
-spacing = 1
-padding-left = 0
-padding-right = 1
-module-margin-left = 0
-module-margin-right = 0
-
-font-0 = Agave:pixelsize=10;0
-font-1 = FontAwesome:size=10;-2
-font-2 = siji:pixilsize=10;0
-
-modules-left = bspwm xwindow
-modules-center = 
-modules-right = volume spotify date
-
-;tray-position = right
-;tray-padding = 2
-;tray-background = #66333333
-
-wm-restack = bspwm
-
-scroll-up = bspwm-desknext
-scroll-down = bspwm-deskprev
+tray-position =
 
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...%
-
-[module/xkeyboard]
-type = internal/xkeyboard
-blacklist-0 = num lock
-
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline = ${colors.secondary}
-
-label-layout = %layout%
-label-layout-underline = ${colors.secondary}
-
-label-indicator-padding = 2
-label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
 
 [module/filesystem]
 type = internal/fs
 interval = 25
 
 mount-0 = /
+mount-1 = /home
 
 label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
@@ -123,25 +88,85 @@ label-unmounted-foreground = ${colors.foreground-alt}
 [module/bspwm]
 type = internal/bspwm
 
-label-focused = %name%
-label-focused-background = #171717
-label-focused-underline= #ddd
+ws-icon-1 = browser;
+ws-icon-2 = android;
+ws-icon-3 = blank;
+ws-icon-4 = blank;
+ws-icon-5 = music;
+
+ws-icon-6 = code;
+ws-icon-7 = server;
+ws-icon-8 = blank;
+ws-icon-9 = telegram;
+ws-icon-0 = wiki;
+
+label-focused = %icon%
+label-focused-background = ${colors.background-alt}
+label-focused-underline= ${colors.primary}
 label-focused-padding = 2
 
-label-occupied = %name%
+label-occupied = %icon%
 label-occupied-padding = 2
 
-label-urgent = %name%!
+label-urgent = %icon%!
+label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
-label-empty = %name%
-label-empty-foreground = #44ffffff
+label-empty = %icon%
+label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 2
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+; Only show workspaces on the same output as the bar
+;pin-workspaces = true
+
+label-mode-padding = 2
+label-mode-foreground = #000
+label-mode-background = ${colors.primary}
+
+; focused = Active workspace on focused monitor
+label-focused = %index%
+label-focused-background = ${module/bspwm.label-focused-background}
+label-focused-underline = ${module/bspwm.label-focused-underline}
+label-focused-padding = ${module/bspwm.label-focused-padding}
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %index%
+label-unfocused-padding = ${module/bspwm.label-occupied-padding}
+
+; visible = Active workspace on unfocused monitor
+label-visible = %index%
+label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %index%
+label-urgent-background = ${module/bspwm.label-urgent-background}
+label-urgent-padding = ${module/bspwm.label-urgent-padding}
+
+[module/mpd]
+type = internal/mpd
+format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+
+icon-prev = 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-next = 
+
+label-song-maxlen = 25
+label-song-ellipsis = true
 
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #f90000
 label = %percentage%%
@@ -149,10 +174,32 @@ label = %percentage%%
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #4bffdc
 label = %percentage_used%%
+
+[module/wlan]
+type = internal/network
+interface = 
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+format-connected-underline = #9f78e1
+label-connected = %essid%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
 type = internal/network
@@ -172,15 +219,15 @@ format-disconnected =
 
 [module/date]
 type = internal/date
-interval = 5
+interval = 1
 
 date =
 date-alt = " %Y-%m-%d"
 
-time = %H:%M
+time = %H:%M:%S
 time-alt = %H:%M:%S
 
-format-prefix = 
+format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #0a6cf5
 
@@ -190,10 +237,10 @@ label = %date% %time%
 type = internal/volume
 
 format-volume = <label-volume> <bar-volume>
-label-volume = VOL
+label-volume = 
 label-volume-foreground = ${root.foreground}
 
-format-muted-prefix = " "
+format-muted-prefix = " "
 format-muted-foreground = ${colors.foreground-alt}
 label-muted = sound muted
 
@@ -214,6 +261,33 @@ bar-volume-empty = ─
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+full-at = 98
+
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = #ffb52a
+
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-underline = ${self.format-charging-underline}
+
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-underline = ${self.format-charging-underline}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-foreground = ${colors.foreground-alt}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-framerate = 750
+
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
@@ -228,9 +302,9 @@ label = %temperature%
 label-warn = %temperature%
 label-warn-foreground = ${colors.secondary}
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
 
 [module/powermenu]
@@ -238,7 +312,8 @@ type = custom/menu
 
 format-spacing = 1
 
-label-open = 
+; fa-power-off
+label-open = 
 label-open-foreground = ${colors.secondary}
 label-close =  cancel
 label-close-foreground = ${colors.secondary}
@@ -259,7 +334,6 @@ menu-2-0 = power off
 menu-2-0-exec = sudo poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
-
 
 [settings]
 screenchange-reload = true

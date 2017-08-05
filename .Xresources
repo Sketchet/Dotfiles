@@ -1,10 +1,11 @@
-#include ".config/colors/.Xresources"
+#include ".config/colors/ice"
 
 ! urxvt
 URxvt*scrollBar:            false
 URxvt*internalBorder:       24
 
 URxvt*letterSpace:          1
+URxvt*lineSpace:            1
 
 URxvt*font:                 xft:Agave:size=10
 
@@ -14,11 +15,11 @@ URxvt*font:                 xft:Agave:size=10
 ! rofi color
 rofi.color-enabled:         true
 !                           bg       border   separator
-rofi.color-window:          #1c1c1c, #1c1c1c, #6aa7a5
+rofi.color-window:          #12121e, #ebebff, #ebebff
 !                           bg       fg       bg-alt   hl-bg    hl-fg 
-rofi.color-normal:          #1c1c1c, #6aa7a5, #1c1c1c, #6aa7a5, #1c1c1c
-rofi.color-active:          #1c1c1c, #6aa7a5, #1c1c1c, #6aa7a5, #1c1c1c
-rofi.color-urgent:          #1c1c1c, #6aa7a5, #1c1c1c, #6aa7a5, #1c1c1c
+rofi.color-normal:          #12121e, #ebebff, #12121e, #ebebff, #12121e
+rofi.color-active:          #12121e, #ebebff, #12121e, #ebebff, #12121e
+rofi.color-urgent:          #12121e, #ebebff, #12121e, #ebebff, #12121e
 ! rofi separtor style
 rofi.separator-style:       solid
 ! rofi scrollbar
